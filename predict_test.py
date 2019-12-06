@@ -20,9 +20,11 @@ def main():
      print("Done")
 
 def predict(model, class_names, img, true_label):
+    predictImg = tf.cast(img, tf.float32)
+    predictImg = np.array([predictImg])
     img = np.array([img])
     #Replace these two lines with code to make a prediction
-    prediction = model.predict(img)
+    prediction = model.predict(predictImg)
     #Determine what the predicted label is
     predicted_label = np.argmax(prediction)
     plot(class_names, prediction, true_label, predicted_label, img[0])
