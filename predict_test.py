@@ -27,7 +27,7 @@ def predict(model, class_names, img, true_label):
     prediction = model.predict(predictImg)
     #Determine what the predicted label is
     predicted_label = np.argmax(prediction)
-    plot(class_names, prediction, true_label, predicted_label, img[0])
+    plot(class_names, prediction[0], true_label, predicted_label, img[0])
     plt.show()
 
 def check_args():
