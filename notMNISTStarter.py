@@ -18,17 +18,12 @@ print(len(y_train))
 x_train, x_test = x_train / 255.0, x_test / 255.0
 
 print("--Make model--")
-model = tf.keras.models.Sequential([
-  tf.keras.layers.Conv1D(32, 5, activation='relu',
-                           kernel_regularizer=tf.keras.regularizers.l2(0.005),
-                           input_shape=(28, 28)),
-  tf.keras.layers.MaxPooling1D(2),
-  tf.keras.layers.Dropout(0.1),
-  tf.keras.layers.Flatten(),
-  tf.keras.layers.Dense(1024, activation='relu'),
-  tf.keras.layers.Dropout(0.1),
-  tf.keras.layers.Dense(10, activation='softmax')
+model = tf.keras.Sequential([
+    tf.keras.layers.Flatten(input_shape=(28, 28)),
+    tf.keras.layers.Dense(1024, activation='relu'),
+    tf.keras.layers.Dense(10, activation='softmax')
 ])
+
 model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 
 print("--Fit model--")
